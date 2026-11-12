@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// Limite da regra B = 8: campo principal (Máquina) com no máximo 30 caracteres
+// campo principal (Máquina) com no máximo 30 caracteres
 const LIMITE_MAQUINA = 30
 const PRIORIDADES = ['Baixa', 'Média', 'Alta']
 
@@ -25,7 +25,7 @@ function Cadastro({ onAdicionar }) {
     if (!maquina.trim() || !tempo || !prioridade || !setor.trim()) {
       return 'Preencha todos os campos.'
     }
-    // Regra B = 8: Máquina com no máximo 30 caracteres
+    // Máquina com no máximo 30 caracteres
     if (maquina.trim().length > LIMITE_MAQUINA) {
       return `O campo Máquina aceita no máximo ${LIMITE_MAQUINA} caracteres (você digitou ${maquina.trim().length}).`
     }

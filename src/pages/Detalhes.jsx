@@ -2,12 +2,12 @@ import { Link, useParams } from 'react-router-dom'
 
 // Página de detalhes (rota "/ordens/:id", opcional O2).
 // Props (vindas do App.jsx):
-//   - ordens: o estado (array) do App
+//   - ordens: o estado do App
 // O id NÃO vem por props: ele vem da URL, lido com useParams.
 function Detalhes({ ordens }) {
   const { id } = useParams()
 
-  // useParams devolve texto, por isso converto para número antes de comparar com o id
+  // devolve texto, por isso converto para número antes de comparar com o id
   const ordem = ordens.find((o) => o.id === Number(id))
 
   if (!ordem) {
