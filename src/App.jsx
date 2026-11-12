@@ -3,10 +3,13 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Home from './pages/Home.jsx'
 import Cadastro from './pages/Cadastro.jsx'
+import Visualizacao from './pages/Visualizacao.jsx'
+import Detalhes from './pages/Detalhes.jsx'
 import NaoEncontrada from './pages/NaoEncontrada.jsx'
 
 // Constantes passadas via props
 const NOME_SISTEMA = 'Manutenção industrial — Vitor'
+const TITULO_VISUALIZACAO = 'Ordens de manutenção'
 const NOME_ALUNO = 'Vitor de Souza Dias'
 
 // 3 registros de exemplo; o primeiro leva meu RA no campo complementar (Setor)
@@ -25,6 +28,11 @@ function App() {
     setOrdens([...ordens, novaOrdem])
   }
 
+  // Remove pelo id (opcional O3): o filter também devolve um array novo
+  function removerOrdem(id) {
+    setOrdens(ordens.filter((ordem) => ordem.id !== id))
+  }
+
   // Quantidade calculada aqui e entregue pronta para Home e Navbar
   const quantidade = ordens.length
 
@@ -38,7 +46,11 @@ function App() {
             element={<Home nomeSistema={NOME_SISTEMA} nomeAluno={NOME_ALUNO} quantidade={quantidade} />}
           />
           <Route path="/ordens/novo" element={<Cadastro onAdicionar={adicionarOrdem} />} />
-          <Route path="/ordens" element={<h2>Ordens de manutenção</h2>} />
+          <Route
+            path="/ordens"
+            element={<Visualizacao title={TITULO_VISUALIZACAO} ordens={ordens} onRemover={removerOrdem} />}
+          />
+          <Route path="/ordens/:id" element={<Detalhes ordens={ordens} />} />
           {/* Rota coringa: qualquer caminho que não bateu com as rotas acima */}
           <Route path="*" element={<NaoEncontrada />} />
         </Routes>
