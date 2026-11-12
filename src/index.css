@@ -2,3 +2,47 @@ body {
   margin: 0;
   font-family: system-ui, sans-serif;
 }
+
+/* Navbar layout D = 3: nome à esquerda, links à direita */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+  background: #333;
+}
+
+.nav-marca {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+
+.nav-link.ativo {
+  background: #fff;
+  color: #333;
+}
+
+.contador {
+  display: inline-block;
+  min-width: 1.4rem;
+  margin-left: 0.3rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: #ffcc00;
+  color: #222;
+  font-size: 0.8rem;
+  text-align: center;
+}
